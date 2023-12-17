@@ -11,9 +11,9 @@ router.get('/', (req, res) => {
 
 router.post('/lawyersNearby', async (req, res) => {
   if (!isUpdating) {
+    try {
     isUpdating = true
     const { latitude, longitude } = req.body.coordinates
-    try {
       const list = await searchLawyersNearby(latitude, longitude);
       lawyers = list;
       res.send(list);

@@ -24,7 +24,7 @@ app.set('views', viewsPath)
  
 app.use(express.static(publicDirectoryPath));
 
-const port = process.env.PORT || 3000
+const port = process.env.Backend_PORT || 7000;
 
 //middelwares
 var corsOptions = {
