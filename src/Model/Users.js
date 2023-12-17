@@ -4,10 +4,6 @@ const userSchema =new mongoose.Schema({
     id:{
         type: mongoose.ObjectId,
     },
-    username:{
-        type: String,
-        allowNull: true
-    },
     firstName:{
         type: String,
         require: true
@@ -39,14 +35,6 @@ const userSchema =new mongoose.Schema({
     phone:{
         type: String,
         require: true
-    },
-    googleID: {
-        type: String,
-        allowNULL: true
-    },
-    picture:{
-        type: String,
-        allowNULL: true
     }
 },{timestamps: true});
 

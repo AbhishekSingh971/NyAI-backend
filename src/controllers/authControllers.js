@@ -1,9 +1,7 @@
 const { hashPassword, comparePassword } = require("../authHelper/auth");
 const Users = require("../Model/Users");
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
-
-dotenv.config();
+require("dotenv").config();
 
 const registerController = async (req, res) => {
   try {
@@ -95,7 +93,8 @@ const loginController = async (req, res) => {
       });
     }
 
-    const token = await jwt.sign({ _id: user._id }, process.env.SECRET, {
+    const token = await jwt.sign({ _id: user._id }, process.env.SECRET||"DELPQ_123"
+,{
       expiresIn: "7d",
     });
 
@@ -118,7 +117,7 @@ const loginController = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "login not successfull",
-      error,
+      error: error.message,
     });
   }
 };
