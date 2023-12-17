@@ -7,7 +7,7 @@ let lawyers = []
 let isUpdating = false
 router.get('/', (req, res) => {
   res.render('index')
-})
+});
 
 router.post('/lawyersNearby', async (req, res) => {
   if (!isUpdating) {
@@ -17,6 +17,7 @@ router.post('/lawyersNearby', async (req, res) => {
       const list = await searchLawyersNearby(latitude, longitude);
       lawyers = list;
       res.send(list);
+      isUpdating=false
     } catch (error) {
       res.status(500).send({ error: 'Internal Server Error' });
     }
