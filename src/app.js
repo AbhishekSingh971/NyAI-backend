@@ -3,6 +3,7 @@ const hbs = require('hbs');
 const path = require('path');
 const lawyerRouter = require('./routes/lawyersRoute');
 const auth = require("./routes/authRoutes");
+const validate = require("./routes/validate");
 const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -33,6 +34,7 @@ var corsOptions = {
     AccessControlAllowOrigin: "*",
 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
+  app.use(cors(corsOptions));
 
 // var corsOptions = {
 //   origin: '*',
@@ -40,7 +42,6 @@ var corsOptions = {
 //   // optionsSuccessStatus: 200,
 //   AccessControlAllowOrigin: "*"
 // }
-app.use(cors(corsOptions));
 
 
 app.use(express.json());
@@ -49,6 +50,7 @@ app.use(morgan('dev'));
 //routes
 app.use("/api/v1/auth", auth);
 app.use("/api/v1",lawyerRouter);
+app.use("/validate-id",validate);
 
 //REST api
 app.get('/', (req,res)=>{
