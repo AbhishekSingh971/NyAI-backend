@@ -35,6 +35,14 @@ const userSchema =new mongoose.Schema({
     phone:{
         type: String,
         require: true
+    },
+    idType:{
+        type: String,
+        require: true
+    },
+    idNumber: {
+        type: String,
+        require: true
     }
 },{timestamps: true});
 

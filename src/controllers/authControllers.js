@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const registerController = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, date, address, phone, answer } =
+    const { firstName, lastName, email, password, date, address, phone, answer} =
       await req.body;
 
     if (!firstName) {
@@ -30,6 +30,7 @@ const registerController = async (req, res) => {
       return res.send({ message: "Phone is required" });
     }
 
+
     const existingUser = await Users.findOne({ email });
 
     if (existingUser) {
@@ -50,6 +51,7 @@ const registerController = async (req, res) => {
       phone,
       address,
       answer,
+      
     }).save();
 
     res.status(201).send({
