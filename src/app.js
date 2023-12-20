@@ -29,9 +29,9 @@ const port = process.env.Backend_PORT || 7000;
 
 //middelwares
 var corsOptions = {
-    origin: "http://localhost:5173", // change to the address of your local server if needed
+    origin: "https://statuesque-phoenix-70b434.netlify.app", // change to the address of your local server if needed
     optionsSuccessStatus: 200,
-    AccessControlAllowOrigin: "*",
+    AccessControlAllowOrigin: "https://statuesque-phoenix-70b434.netlify.app",
 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
   app.use(cors(corsOptions));
